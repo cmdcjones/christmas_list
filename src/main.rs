@@ -6,6 +6,7 @@ struct Person {
     received: bool,
 }
 
+// More user friendly printing for Person
 impl fmt::Display for Person {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "This is {}.\n", self.name)?;
@@ -17,6 +18,7 @@ impl fmt::Display for Person {
     }
 }
 
+// builder function
 fn create_person(name: String) -> Person {
     Person {
         name,
@@ -28,12 +30,16 @@ fn main() {
     println!("Enter a name:");
 
     let mut name = String::new();
+    // read input from stdin
     io::stdin()
         .read_line(&mut name)
         .expect("Could not read in name");
+    // change &str to String
     let name: String = name.trim().to_string();
 
-    let person: Person = create_person(name);
+    // person will mutate in the future
+    let mut person: Person = create_person(name);
+    // time to read up on vectors!
     // let people: vec!<Person> = vec!
 
     println!("{person}");
