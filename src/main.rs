@@ -26,21 +26,29 @@ fn create_person(name: String) -> Person {
     }
 }
 
+// use loop to find a person, if no person is found, create them
+// fn find_person(name: String, list_of_people: &Vec<Person>) -> Person {
+//     Person
+// }
+
 fn main() {
-    println!("Enter a name:");
-
-    let mut name = String::new();
-    // read input from stdin
-    io::stdin()
-        .read_line(&mut name)
-        .expect("Could not read in name");
-    // change &str to String
-    let name: String = name.trim().to_string();
-
-    // person will mutate in the future
-    let mut person: Person = create_person(name);
     // time to read up on vectors!
-    // let people: vec!<Person> = vec!
+    let people: Vec<Person> = Vec::new();
 
-    println!("{person}");
+    loop {
+        println!("Enter a name:");
+
+        let mut name = String::new();
+        // read input from stdin
+        io::stdin()
+            .read_line(&mut name)
+            .expect("Could not read in name");
+        // change &str to String
+        let name: String = name.trim().to_string();
+
+        // person will mutate in the future
+        let mut person: Person = create_person(name);
+
+        println!("{person}");
+    }
 }
